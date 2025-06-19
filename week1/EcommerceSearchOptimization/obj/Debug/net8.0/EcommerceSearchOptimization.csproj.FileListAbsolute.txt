@@ -1,0 +1,15 @@
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\bin\Debug\net8.0\EcommerceSearchOptimization.exe
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\bin\Debug\net8.0\EcommerceSearchOptimization.deps.json
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\bin\Debug\net8.0\EcommerceSearchOptimization.runtimeconfig.json
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\bin\Debug\net8.0\EcommerceSearchOptimization.dll
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\bin\Debug\net8.0\EcommerceSearchOptimization.pdb
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.AssemblyInfoInputs.cache
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.AssemblyInfo.cs
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.csproj.CoreCompileInputs.cache
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.sourcelink.json
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.dll
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\refint\EcommerceSearchOptimization.dll
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.pdb
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\EcommerceSearchOptimization.genruntimeconfig.cache
+C:\Users\anush\COGNIZANT\week1\EcommerceSearchOptimization\obj\Debug\net8.0\ref\EcommerceSearchOptimization.dll
