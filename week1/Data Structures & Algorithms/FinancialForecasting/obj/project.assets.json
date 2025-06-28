@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anush\\COGNIZANT\\week1\\FinancialForecasting\\FinancialForecasting.csproj",
+      "projectUniqueName": "C:\\Users\\anush\\COGNIZANT\\week1\\Data Structures & Algorithms\\FinancialForecasting\\FinancialForecasting.csproj",
       "projectName": "FinancialForecasting",
-      "projectPath": "C:\\Users\\anush\\COGNIZANT\\week1\\FinancialForecasting\\FinancialForecasting.csproj",
+      "projectPath": "C:\\Users\\anush\\COGNIZANT\\week1\\Data Structures & Algorithms\\FinancialForecasting\\FinancialForecasting.csproj",
       "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anush\\COGNIZANT\\week1\\FinancialForecasting\\obj\\",
+      "outputPath": "C:\\Users\\anush\\COGNIZANT\\week1\\Data Structures & Algorithms\\FinancialForecasting\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config"

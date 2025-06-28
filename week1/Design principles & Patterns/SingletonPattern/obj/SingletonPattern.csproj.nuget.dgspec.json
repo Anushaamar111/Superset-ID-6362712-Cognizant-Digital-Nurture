@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anush\\COGNIZANT\\week1\\SingletonPattern\\SingletonPattern.csproj": {}
+    "C:\\Users\\anush\\COGNIZANT\\week1\\Design principles & Patterns\\SingletonPattern\\SingletonPattern.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anush\\COGNIZANT\\week1\\SingletonPattern\\SingletonPattern.csproj": {
+    "C:\\Users\\anush\\COGNIZANT\\week1\\Design principles & Patterns\\SingletonPattern\\SingletonPattern.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anush\\COGNIZANT\\week1\\SingletonPattern\\SingletonPattern.csproj",
+        "projectUniqueName": "C:\\Users\\anush\\COGNIZANT\\week1\\Design principles & Patterns\\SingletonPattern\\SingletonPattern.csproj",
         "projectName": "SingletonPattern",
-        "projectPath": "C:\\Users\\anush\\COGNIZANT\\week1\\SingletonPattern\\SingletonPattern.csproj",
+        "projectPath": "C:\\Users\\anush\\COGNIZANT\\week1\\Design principles & Patterns\\SingletonPattern\\SingletonPattern.csproj",
         "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anush\\COGNIZANT\\week1\\SingletonPattern\\obj\\",
+        "outputPath": "C:\\Users\\anush\\COGNIZANT\\week1\\Design principles & Patterns\\SingletonPattern\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config"

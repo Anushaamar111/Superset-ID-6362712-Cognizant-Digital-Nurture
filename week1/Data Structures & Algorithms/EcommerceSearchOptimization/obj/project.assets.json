@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anush\\COGNIZANT\\week1\\EcommerceSearchOptimization\\EcommerceSearchOptimization.csproj",
+      "projectUniqueName": "C:\\Users\\anush\\COGNIZANT\\week1\\Data Structures & Algorithms\\EcommerceSearchOptimization\\EcommerceSearchOptimization.csproj",
       "projectName": "EcommerceSearchOptimization",
-      "projectPath": "C:\\Users\\anush\\COGNIZANT\\week1\\EcommerceSearchOptimization\\EcommerceSearchOptimization.csproj",
+      "projectPath": "C:\\Users\\anush\\COGNIZANT\\week1\\Data Structures & Algorithms\\EcommerceSearchOptimization\\EcommerceSearchOptimization.csproj",
       "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anush\\COGNIZANT\\week1\\EcommerceSearchOptimization\\obj\\",
+      "outputPath": "C:\\Users\\anush\\COGNIZANT\\week1\\Data Structures & Algorithms\\EcommerceSearchOptimization\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config"
