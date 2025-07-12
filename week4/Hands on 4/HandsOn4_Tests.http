@@ -1,0 +1,185 @@
+@week4_HostAddress = http://localhost:5227
+
+# === Hands on 4: Employee CRUD Operations ===
+
+# Get all employees
+GET {{week4_HostAddress}}/api/employeecrud
+Accept: application/json
+
+###
+
+# Get employee by valid ID
+GET {{week4_HostAddress}}/api/employeecrud/1
+Accept: application/json
+
+###
+
+# Get employee by invalid ID (should return BadRequest)
+GET {{week4_HostAddress}}/api/employeecrud/0
+Accept: application/json
+
+###
+
+# Get employee by non-existent ID (should return BadRequest)
+GET {{week4_HostAddress}}/api/employeecrud/999
+Accept: application/json
+
+###
+
+# Create a new employee
+POST {{week4_HostAddress}}/api/employeecrud
+Content-Type: application/json
+
+{
+  "name": "New Employee Test",
+  "salary": 85000,
+  "permanent": true,
+  "dateOfBirth": "1995-06-20T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "IT",
+    "description": "Information Technology"
+  },
+  "skills": [
+    {
+      "id": 9,
+      "name": "Python",
+      "level": "Intermediate",
+      "yearsOfExperience": 3
+    },
+    {
+      "id": 10,
+      "name": "Machine Learning",
+      "level": "Beginner",
+      "yearsOfExperience": 1
+    }
+  ]
+}
+
+###
+
+# Update existing employee (Valid ID = 1)
+PUT {{week4_HostAddress}}/api/employeecrud/1
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated",
+  "salary": 85000,
+  "permanent": true,
+  "dateOfBirth": "1990-05-15T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "Senior IT",
+    "description": "Senior Information Technology"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "C#",
+      "level": "Expert",
+      "yearsOfExperience": 6
+    },
+    {
+      "id": 2,
+      "name": "ASP.NET Core",
+      "level": "Expert",
+      "yearsOfExperience": 5
+    },
+    {
+      "id": 11,
+      "name": "Azure",
+      "level": "Advanced",
+      "yearsOfExperience": 3
+    }
+  ]
+}
+
+###
+
+# Update employee with invalid ID (ID <= 0) - Should return BadRequest
+PUT {{week4_HostAddress}}/api/employeecrud/0
+Content-Type: application/json
+
+{
+  "name": "Should Fail",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00"
+}
+
+###
+
+# Update employee with invalid ID (ID > 0 but not in list) - Should return BadRequest
+PUT {{week4_HostAddress}}/api/employeecrud/999
+Content-Type: application/json
+
+{
+  "name": "Should Also Fail",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00"
+}
+
+###
+
+# Update employee with negative ID - Should return BadRequest
+PUT {{week4_HostAddress}}/api/employeecrud/-5
+Content-Type: application/json
+
+{
+  "name": "Negative ID Test",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00"
+}
+
+###
+
+# Update employee with partial data (Valid ID = 2)
+PUT {{week4_HostAddress}}/api/employeecrud/2
+Content-Type: application/json
+
+{
+  "name": "Jane Smith - Partial Update",
+  "salary": 70000,
+  "permanent": true,
+  "dateOfBirth": "1985-08-22T00:00:00"
+}
+
+###
+
+# Verify the update by getting the employee
+GET {{week4_HostAddress}}/api/employeecrud/1
+Accept: application/json
+
+###
+
+# Delete employee with valid ID
+DELETE {{week4_HostAddress}}/api/employeecrud/4
+Accept: application/json
+
+###
+
+# Delete employee with invalid ID (should return BadRequest)
+DELETE {{week4_HostAddress}}/api/employeecrud/0
+Accept: application/json
+
+###
+
+# Delete employee with non-existent ID (should return BadRequest)
+DELETE {{week4_HostAddress}}/api/employeecrud/999
+Accept: application/json
+
+###
+
+# Reset employees to default data (for testing purposes)
+POST {{week4_HostAddress}}/api/employeecrud/reset
+Accept: application/json
+
+###
+
+# Verify reset worked
+GET {{week4_HostAddress}}/api/employeecrud
+Accept: application/json
+
+###

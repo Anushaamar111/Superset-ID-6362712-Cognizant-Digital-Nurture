@@ -1,0 +1,65 @@
+### JWT Authentication Tests for Hands on 5
+### Test the AuthController and JWT Token Generation
+
+### 1. Login with Admin credentials
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### 2. Login with Manager credentials
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "manager",
+  "password": "manager123"
+}
+
+### 3. Login with User credentials
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+### 4. Login with invalid credentials (should fail)
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "invalid",
+  "password": "invalid"
+}
+
+### 5. Get current user info (requires valid JWT token)
+### Replace YOUR_JWT_TOKEN_HERE with actual token from login response
+GET https://localhost:7000/api/auth/me
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### 6. Get all users (Admin only)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+GET https://localhost:7000/api/auth/users
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### 7. Get all users with Manager token (should fail - 403 Forbidden)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+GET https://localhost:7000/api/auth/users
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+### 8. Refresh token (requires valid JWT token)
+### Replace YOUR_JWT_TOKEN_HERE with valid token from login response
+POST https://localhost:7000/api/auth/refresh
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### 9. Access protected endpoint without token (should fail - 401 Unauthorized)
+GET https://localhost:7000/api/auth/me
+
+### 10. Access protected endpoint with invalid token (should fail - 401 Unauthorized)
+GET https://localhost:7000/api/auth/me
+Authorization: Bearer invalid_token_here

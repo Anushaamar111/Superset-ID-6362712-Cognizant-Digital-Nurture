@@ -1,0 +1,190 @@
+@week4_HostAddress = http://localhost:5227
+
+# === Product API Tests ===
+# Get all products
+GET {{week4_HostAddress}}/api/product
+Accept: application/json
+
+###
+
+# Get product by ID
+GET {{week4_HostAddress}}/api/product/1
+Accept: application/json
+
+###
+
+# Create a new product
+POST {{week4_HostAddress}}/api/product
+Content-Type: application/json
+
+{
+  "name": "New Product",
+  "price": 199.99
+}
+
+###
+
+# Update existing product
+PUT {{week4_HostAddress}}/api/product/1
+Content-Type: application/json
+
+{
+  "name": "Updated Laptop",
+  "price": 1299.99
+}
+
+###
+
+# Delete a product
+DELETE {{week4_HostAddress}}/api/product/3
+Accept: application/json
+
+###
+
+# === Employee API Tests (With Authorization) ===
+# Get all employees (with proper authorization)
+GET {{week4_HostAddress}}/api/employee
+Accept: application/json
+Authorization: Bearer your-token-here
+
+###
+
+# Get all employees (without authorization - should fail)
+GET {{week4_HostAddress}}/api/employee
+Accept: application/json
+
+###
+
+# === Employee CRUD API Tests (Hands on 4) ===
+# Get all employees (no auth required)
+GET {{week4_HostAddress}}/api/employeecrud
+Accept: application/json
+
+###
+
+# Get employee by valid ID
+GET {{week4_HostAddress}}/api/employeecrud/1
+Accept: application/json
+
+###
+
+# Get employee by invalid ID (should return BadRequest)
+GET {{week4_HostAddress}}/api/employeecrud/0
+Accept: application/json
+
+###
+
+# Update existing employee (Valid ID = 1) - MAIN TEST CASE
+PUT {{week4_HostAddress}}/api/employeecrud/1
+Content-Type: application/json
+
+{
+  "name": "John Doe Updated via Swagger",
+  "salary": 85000,
+  "permanent": true,
+  "dateOfBirth": "1990-05-15T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "Senior IT",
+    "description": "Senior Information Technology"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "C#",
+      "level": "Expert",
+      "yearsOfExperience": 6
+    },
+    {
+      "id": 2,
+      "name": "ASP.NET Core",
+      "level": "Expert",
+      "yearsOfExperience": 5
+    }
+  ]
+}
+
+###
+
+# Update employee with invalid ID (ID <= 0) - Should return BadRequest
+PUT {{week4_HostAddress}}/api/employeecrud/0
+Content-Type: application/json
+
+{
+  "name": "Should Fail",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00"
+}
+
+###
+
+# Update employee with non-existent ID - Should return BadRequest
+PUT {{week4_HostAddress}}/api/employeecrud/999
+Content-Type: application/json
+
+{
+  "name": "Should Also Fail",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00"
+}
+
+###
+
+# Verify the update by getting the employee
+GET {{week4_HostAddress}}/api/employeecrud/1
+Accept: application/json
+
+###
+
+# Create a new employee
+POST {{week4_HostAddress}}/api/employeecrud
+Content-Type: application/json
+
+{
+  "name": "New Employee via API",
+  "salary": 75000,
+  "permanent": true,
+  "dateOfBirth": "1995-06-20T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "IT",
+    "description": "Information Technology"
+  },
+  "skills": [
+    {
+      "id": 9,
+      "name": "Python",
+      "level": "Intermediate",
+      "yearsOfExperience": 3
+    }
+  ]
+}
+
+###
+
+# Delete an employee
+DELETE {{week4_HostAddress}}/api/employeecrud/4
+Accept: application/json
+
+###
+
+# Reset employees to default data
+POST {{week4_HostAddress}}/api/employeecrud/reset
+Accept: application/json
+
+###
+
+# === Values API Tests ===
+# Get all values
+GET {{week4_HostAddress}}/api/values
+Accept: application/json
+
+###
+
+# Get value by ID
+GET {{week4_HostAddress}}/api/values/1
+Accept: application/json
+
+###

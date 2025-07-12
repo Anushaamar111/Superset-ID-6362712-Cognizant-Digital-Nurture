@@ -1,0 +1,203 @@
+### Role-Based Authorization Testing - Hands on 5
+### Test different role combinations as requested in the requirements
+
+### Step 1: Get tokens for different roles
+
+### Login as Admin (role: Admin)
+POST https://localhost:7000/api/testauth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Login as Manager (role: Manager)
+POST https://localhost:7000/api/testauth/login
+Content-Type: application/json
+
+{
+  "username": "manager",
+  "password": "manager123"
+}
+
+### Login as User (role: User)
+POST https://localhost:7000/api/testauth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+### Step 2: Test POC role requirement (should fail with Admin token)
+
+### Test POC-only endpoint with Admin token (should fail - 403 Forbidden)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+GET https://localhost:7000/api/testrole/poc-only
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### Test POC-only endpoint with Manager token (should fail - 403 Forbidden)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+GET https://localhost:7000/api/testrole/poc-only
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+### Test POC-only endpoint with User token (should fail - 403 Forbidden)
+### Replace YOUR_USER_JWT_TOKEN_HERE with user token from login response
+GET https://localhost:7000/api/testrole/poc-only
+Authorization: Bearer YOUR_USER_JWT_TOKEN_HERE
+
+### Step 3: Test Admin OR POC roles (should work with Admin token)
+
+### Test Admin-or-POC endpoint with Admin token (should work - 200 OK)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+GET https://localhost:7000/api/testrole/admin-or-poc
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### Test Admin-or-POC endpoint with Manager token (should fail - 403 Forbidden)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+GET https://localhost:7000/api/testrole/admin-or-poc
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+### Test Admin-or-POC endpoint with User token (should fail - 403 Forbidden)
+### Replace YOUR_USER_JWT_TOKEN_HERE with user token from login response
+GET https://localhost:7000/api/testrole/admin-or-poc
+Authorization: Bearer YOUR_USER_JWT_TOKEN_HERE
+
+### Step 4: Test Admin-only endpoint
+
+### Test Admin-only endpoint with Admin token (should work - 200 OK)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+GET https://localhost:7000/api/testrole/admin-only
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### Test Admin-only endpoint with Manager token (should fail - 403 Forbidden)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+GET https://localhost:7000/api/testrole/admin-only
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+### Step 5: Test authenticated endpoint (should work with any valid token)
+
+### Test authenticated endpoint with Admin token (should work - 200 OK)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+GET https://localhost:7000/api/testrole/authenticated
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### Test authenticated endpoint with Manager token (should work - 200 OK)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+GET https://localhost:7000/api/testrole/authenticated
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+### Test authenticated endpoint with User token (should work - 200 OK)
+### Replace YOUR_USER_JWT_TOKEN_HERE with user token from login response
+GET https://localhost:7000/api/testrole/authenticated
+Authorization: Bearer YOUR_USER_JWT_TOKEN_HERE
+
+### Step 6: Test anonymous endpoint (should work without token)
+
+### Test anonymous endpoint without token (should work - 200 OK)
+GET https://localhost:7000/api/testrole/anonymous
+
+### Test anonymous endpoint with token (should also work - 200 OK)
+### Replace YOUR_JWT_TOKEN_HERE with any valid token
+GET https://localhost:7000/api/testrole/anonymous
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Step 7: Test JWT expiration (2-minute tokens)
+
+### Get a token and wait 2+ minutes, then test (should fail - 401 Unauthorized)
+### Replace YOUR_EXPIRED_JWT_TOKEN_HERE with a token that's older than 2 minutes
+GET https://localhost:7000/api/testrole/authenticated
+Authorization: Bearer YOUR_EXPIRED_JWT_TOKEN_HERE
+
+### Step 8: Test Employee Controller with different roles
+
+### Test Employee GET (should work with any valid token)
+### Replace YOUR_JWT_TOKEN_HERE with any valid token
+GET https://localhost:7000/api/employee
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### Test Employee POST with Admin token (should work - 201 Created)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token
+POST https://localhost:7000/api/employee
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+{
+  "name": "Test Employee",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "IT",
+    "location": "New York"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "Testing",
+      "level": "Beginner"
+    }
+  ]
+}
+
+### Test Employee POST with Manager token (should work - 201 Created)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token
+POST https://localhost:7000/api/employee
+Content-Type: application/json
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+{
+  "name": "Another Test Employee",
+  "salary": 55000,
+  "permanent": false,
+  "dateOfBirth": "1992-05-15T00:00:00",
+  "department": {
+    "id": 2,
+    "name": "HR",
+    "location": "California"
+  },
+  "skills": [
+    {
+      "id": 2,
+      "name": "HR",
+      "level": "Intermediate"
+    }
+  ]
+}
+
+### Test Employee POST with User token (should fail - 403 Forbidden)
+### Replace YOUR_USER_JWT_TOKEN_HERE with user token
+POST https://localhost:7000/api/employee
+Content-Type: application/json
+Authorization: Bearer YOUR_USER_JWT_TOKEN_HERE
+
+{
+  "name": "Should Not Work",
+  "salary": 40000,
+  "permanent": true,
+  "dateOfBirth": "1995-01-01T00:00:00",
+  "department": {
+    "id": 3,
+    "name": "Finance",
+    "location": "Texas"
+  },
+  "skills": [
+    {
+      "id": 3,
+      "name": "Finance",
+      "level": "Beginner"
+    }
+  ]
+}
+
+### Test Employee DELETE with Admin token (should work - 204 No Content)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token
+DELETE https://localhost:7000/api/employee/1
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### Test Employee DELETE with Manager token (should fail - 403 Forbidden)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token
+DELETE https://localhost:7000/api/employee/2
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE

@@ -1,0 +1,284 @@
+### JWT Authentication Tests for Employee Controller - Hands on 5
+### Test the EmployeeController with JWT Token Authentication
+
+### Step 1: First login to get JWT tokens
+
+### Login as Admin
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Login as Manager
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "manager",
+  "password": "manager123"
+}
+
+### Login as User
+POST https://localhost:7000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+### Step 2: Test Employee Controller with JWT Authentication
+
+### 1. GET all employees with valid token (should work for all authenticated users)
+### Replace YOUR_JWT_TOKEN_HERE with actual token from login response
+GET https://localhost:7000/api/employee
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### 2. GET all employees without token (should fail - 401 Unauthorized)
+GET https://localhost:7000/api/employee
+
+### 3. GET all employees with invalid token (should fail - 401 Unauthorized)
+GET https://localhost:7000/api/employee
+Authorization: Bearer invalid_token_here
+
+### 4. GET employee by ID with valid token
+### Replace YOUR_JWT_TOKEN_HERE with actual token from login response
+GET https://localhost:7000/api/employee/1
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### 5. POST new employee with Admin token (should work)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+POST https://localhost:7000/api/employee
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+{
+  "name": "Alice Johnson",
+  "salary": 75000,
+  "permanent": true,
+  "dateOfBirth": "1988-03-15T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "IT",
+    "location": "New York"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "Python",
+      "level": "Advanced"
+    },
+    {
+      "id": 2,
+      "name": "Django",
+      "level": "Intermediate"
+    }
+  ]
+}
+
+### 6. POST new employee with Manager token (should work)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+POST https://localhost:7000/api/employee
+Content-Type: application/json
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+{
+  "name": "Bob Wilson",
+  "salary": 65000,
+  "permanent": false,
+  "dateOfBirth": "1992-07-22T00:00:00",
+  "department": {
+    "id": 2,
+    "name": "Marketing",
+    "location": "California"
+  },
+  "skills": [
+    {
+      "id": 3,
+      "name": "Marketing",
+      "level": "Advanced"
+    }
+  ]
+}
+
+### 7. POST new employee with User token (should fail - 403 Forbidden)
+### Replace YOUR_USER_JWT_TOKEN_HERE with user token from login response
+POST https://localhost:7000/api/employee
+Content-Type: application/json
+Authorization: Bearer YOUR_USER_JWT_TOKEN_HERE
+
+{
+  "name": "Charlie Brown",
+  "salary": 55000,
+  "permanent": true,
+  "dateOfBirth": "1990-11-10T00:00:00",
+  "department": {
+    "id": 3,
+    "name": "Finance",
+    "location": "Texas"
+  },
+  "skills": [
+    {
+      "id": 4,
+      "name": "Accounting",
+      "level": "Intermediate"
+    }
+  ]
+}
+
+### 8. PUT update employee with Admin token (should work)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+PUT https://localhost:7000/api/employee/1
+Content-Type: application/json
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+{
+  "name": "John Doe Updated",
+  "salary": 55000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "IT",
+    "location": "New York"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "C#",
+      "level": "Expert"
+    },
+    {
+      "id": 2,
+      "name": "ASP.NET",
+      "level": "Advanced"
+    }
+  ]
+}
+
+### 9. PUT update employee with Manager token (should work)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+PUT https://localhost:7000/api/employee/2
+Content-Type: application/json
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+{
+  "name": "Jane Smith Updated",
+  "salary": 65000,
+  "permanent": true,
+  "dateOfBirth": "1985-05-15T00:00:00",
+  "department": {
+    "id": 2,
+    "name": "HR",
+    "location": "California"
+  },
+  "skills": [
+    {
+      "id": 3,
+      "name": "Management",
+      "level": "Expert"
+    },
+    {
+      "id": 4,
+      "name": "Communication",
+      "level": "Expert"
+    }
+  ]
+}
+
+### 10. PUT update employee with User token (should fail - 403 Forbidden)
+### Replace YOUR_USER_JWT_TOKEN_HERE with user token from login response
+PUT https://localhost:7000/api/employee/3
+Content-Type: application/json
+Authorization: Bearer YOUR_USER_JWT_TOKEN_HERE
+
+{
+  "name": "Bob Johnson Updated",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1995-12-03T00:00:00",
+  "department": {
+    "id": 3,
+    "name": "Finance",
+    "location": "Texas"
+  },
+  "skills": [
+    {
+      "id": 5,
+      "name": "Accounting",
+      "level": "Advanced"
+    }
+  ]
+}
+
+### 11. DELETE employee with Admin token (should work)
+### Replace YOUR_ADMIN_JWT_TOKEN_HERE with admin token from login response
+DELETE https://localhost:7000/api/employee/3
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### 12. DELETE employee with Manager token (should fail - 403 Forbidden)
+### Replace YOUR_MANAGER_JWT_TOKEN_HERE with manager token from login response
+DELETE https://localhost:7000/api/employee/2
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+### 13. DELETE employee with User token (should fail - 403 Forbidden)
+### Replace YOUR_USER_JWT_TOKEN_HERE with user token from login response
+DELETE https://localhost:7000/api/employee/1
+Authorization: Bearer YOUR_USER_JWT_TOKEN_HERE
+
+### Step 3: Test JWT Expiration (Set token expiration to 2 minutes in AuthController)
+
+### 14. Test expired token (wait 2+ minutes after getting token, then try to access)
+### Replace YOUR_EXPIRED_JWT_TOKEN_HERE with a token that's older than 2 minutes
+GET https://localhost:7000/api/employee
+Authorization: Bearer YOUR_EXPIRED_JWT_TOKEN_HERE
+
+### Step 4: Test with modified/invalid tokens
+
+### 15. Test with modified token (should fail - 401 Unauthorized)
+### Take a valid token and change a few characters
+GET https://localhost:7000/api/employee
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.MODIFIED_PAYLOAD_HERE.MODIFIED_SIGNATURE_HERE
+
+### 16. Test with malformed token (should fail - 401 Unauthorized)
+GET https://localhost:7000/api/employee
+Authorization: Bearer not_a_valid_jwt_token
+
+### 17. Test with empty token (should fail - 401 Unauthorized)
+GET https://localhost:7000/api/employee
+Authorization: Bearer
+
+### Step 5: Test role-based authorization
+
+### 18. Test endpoint that requires specific roles - Admin only (Delete)
+### This should work only with Admin token
+DELETE https://localhost:7000/api/employee/1
+Authorization: Bearer YOUR_ADMIN_JWT_TOKEN_HERE
+
+### 19. Test endpoint that requires Admin or Manager roles (Create/Update)
+### This should work with both Admin and Manager tokens
+POST https://localhost:7000/api/employee
+Content-Type: application/json
+Authorization: Bearer YOUR_MANAGER_JWT_TOKEN_HERE
+
+{
+  "name": "Test User",
+  "salary": 50000,
+  "permanent": true,
+  "dateOfBirth": "1990-01-01T00:00:00",
+  "department": {
+    "id": 1,
+    "name": "IT",
+    "location": "New York"
+  },
+  "skills": [
+    {
+      "id": 1,
+      "name": "Testing",
+      "level": "Beginner"
+    }
+  ]
+}
