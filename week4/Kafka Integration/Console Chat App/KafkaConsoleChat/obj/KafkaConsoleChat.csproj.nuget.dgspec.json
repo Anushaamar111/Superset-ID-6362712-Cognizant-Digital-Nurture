@@ -1,0 +1,77 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\anush\\COGNIZANT\\week4\\Kafka Integration\\Console Chat App\\KafkaConsoleChat\\KafkaConsoleChat.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\anush\\COGNIZANT\\week4\\Kafka Integration\\Console Chat App\\KafkaConsoleChat\\KafkaConsoleChat.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\anush\\COGNIZANT\\week4\\Kafka Integration\\Console Chat App\\KafkaConsoleChat\\KafkaConsoleChat.csproj",
+        "projectName": "KafkaConsoleChat",
+        "projectPath": "C:\\Users\\anush\\COGNIZANT\\week4\\Kafka Integration\\Console Chat App\\KafkaConsoleChat\\KafkaConsoleChat.csproj",
+        "packagesPath": "C:\\Users\\anush\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\anush\\COGNIZANT\\week4\\Kafka Integration\\Console Chat App\\KafkaConsoleChat\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\anush\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Confluent.Kafka": {
+              "target": "Package",
+              "version": "[2.11.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.301/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
