@@ -1,0 +1,93 @@
+@JwtAuthDemo_HostAddress = https://localhost:7043
+@http_HostAddress = http://localhost:5066
+
+# Test the API root
+GET {{JwtAuthDemo_HostAddress}}/
+Accept: application/json
+
+###
+
+# Get test users (public endpoint)
+GET {{JwtAuthDemo_HostAddress}}/api/auth/test-users
+Accept: application/json
+
+###
+
+# Register a new user
+POST {{JwtAuthDemo_HostAddress}}/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "password": "testpass123"
+}
+
+###
+
+# Login with admin user
+POST {{JwtAuthDemo_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+###
+
+# Login with regular user
+POST {{JwtAuthDemo_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user",
+  "password": "user123"
+}
+
+###
+
+# Login with demo user
+POST {{JwtAuthDemo_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "demo",
+  "password": "demo123"
+}
+
+###
+
+# Access public data (no token required)
+GET {{JwtAuthDemo_HostAddress}}/api/secure/public
+Accept: application/json
+
+###
+
+# Access protected data (requires token - will fail without Authorization header)
+GET {{JwtAuthDemo_HostAddress}}/api/secure/data
+Accept: application/json
+
+###
+
+# Access protected data with token (replace YOUR_JWT_TOKEN with actual token from login)
+GET {{JwtAuthDemo_HostAddress}}/api/secure/data
+Authorization: Bearer YOUR_JWT_TOKEN
+Accept: application/json
+
+###
+
+# Get user info with token (replace YOUR_JWT_TOKEN with actual token from login)
+GET {{JwtAuthDemo_HostAddress}}/api/secure/user-info
+Authorization: Bearer YOUR_JWT_TOKEN
+Accept: application/json
+
+###
+
+# Example with a real token (you need to replace this with token from login response)
+@jwt_token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+GET {{JwtAuthDemo_HostAddress}}/api/secure/data
+Authorization: Bearer {{jwt_token}}
+Accept: application/json
+
+###
