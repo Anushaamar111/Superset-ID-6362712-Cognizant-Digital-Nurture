@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #282c34;
+  color: white;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+li {
+  padding: 5px 0;
+  font-size: 1.2em;
+}
